@@ -1,0 +1,28 @@
+{
+  "name": "traveldiarybackend",
+  "version": "0.1.0",
+  "private": true,
+  "main": "server.js",
+  "dependencies": {
+    "mongodb": "^4.4.1",
+    "mongoose": "^6.2.6",
+    "morgan": "^1.10.0",
+    "express": "^4.17.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "concurrently": "^7.0.0"    
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build --prefix client",
+    "heroku-prebuild": "export NPM_CONFIG_PRODUCTION=false; export NODE_ENV=; NPM_CONFIG_PRODUCTION=false NODE_ENV=development npm install --only=dev --dev",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
+    "start": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently -n 'server,client' -c 'red,green'  \"nodemon server.js\" \"npm run client\""
+  },
+  "engines": {
+    "npm": "8.3.1",
+    "node": "16.14.0"
+  }
+}
