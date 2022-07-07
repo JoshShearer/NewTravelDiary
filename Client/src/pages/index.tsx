@@ -1,11 +1,14 @@
 import type { NextPage } from 'next'
 import Head from 'next/head';
 import { init } from '@rematch/core';
-import { Comps_layout_App } from '#src/Comps/layout/App';
+// import { Comps_layout_App } from '#src/Comps/layout/App';
+import { Comps_Navigation_Footer } from '#src/Comps/Navigation/Footer';
+// import { pages_Home} from '#src/pages/Home';
 import { store } from '#src/models/store';
 import * as serviceWorker from '../serviceWorker';
+import pages_Home from './Home/index';
 
-const Exchange: NextPage = () => {
+const TravelDiary: NextPage = () => {
     return (
         <div className="bg-stone-800">
             <Head>
@@ -17,10 +20,11 @@ const Exchange: NextPage = () => {
                 />
             </Head>
             <main>
-                <Comps_layout_App />
+                {/* <Comps_layout_App /> */}
+                <Comps_Navigation_Footer />
             </main>
         </div>
     )
 }
 
-export default Exchange
+export default TravelDiary

@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 export const Comps_Navigation_Footer = () => {
   return (
@@ -8,12 +9,14 @@ export const Comps_Navigation_Footer = () => {
           
         </nav> */}
         <div className="flex justify-center my-3 space-x-12">
+          <Link href="/Home">
           <button
             type="button"
             className="inline-flex items-center px-6 py-1 border border-white shadow-sm text-base font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
           >
             Home
           </button>
+          </Link>
           <button
             type="button"
             className="inline-flex items-center px-6 py-1 border border-white shadow-sm text-base font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
@@ -30,7 +33,7 @@ export const Comps_Navigation_Footer = () => {
             type="button"
             className="inline-flex items-center px-6 py-1 border border-white shadow-sm text-base font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
           >
-            Entires
+            Entries
           </button>
         </div>
         {/* <p className="mt-8 text-base text-center text-gray-400">&copy; {new Date().getFullYear()} My Company Page, Inc. All rights reserved.</p> */}

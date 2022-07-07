@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // import useSelector from 'reselect';
 
-// import { createStructureSelector } from '#src/models/util'
-// import { userSelector } from '#src/models/hooks';
+// import { createStructuredSelector } from '#src/models/utils'
+// import { useSelector } from '#src/models/hooks';
+
 
 // import { RootState, Actions, dispatch, store } from '#src/models/store'
 
-import { Comps_Navigation_Header } from '#src/Comps/Navigation/Header';
-import { Comps_Navigation_Footer } from '#src/Comps/Navigation/Footer';
-import { XIcon } from '@heroicons/react/outline';
+import { Comps_misc_placeholder } from '#src/Comps';
+
+
 
 const defaultProps = {
   idKey: 'default',
@@ -20,8 +21,14 @@ const defaultProps = {
 //    item: (root) => root.stores,
 // })
 
-export const Comps_layout_App = (_props: typeof defaultProps) => {
+export const Comps_Map = (_props: typeof defaultProps) => {
   const props = { ...defaultProps, ..._props };
+
+  
+  // useEffect(() => {
+    
+  // },[]);
+
   // const selected = useSelector((state) => selector(state, props));
 
   // const selected = useSelector(
@@ -29,18 +36,20 @@ export const Comps_layout_App = (_props: typeof defaultProps) => {
   // );
   // const selected = useSelector(store.select.model.selectorFunction); //using state and selector (internal selector function)
 
+
   return (
-    <div className="Comps_layout_App">
-      <p className="text-white">Comps_layout_App</p>
-      <Comps_Navigation_Footer />
+    <div className="Comps_Map">
+      <Comps_misc_placeholder>
+        <p>Comps_Map</p>
+      </Comps_misc_placeholder>
     </div>
   );
 };
 
-// export class Comps_layout_App extends React.PureComponent<Props> {
+// export class Comps_Map extends React.PureComponent<Props> {
 // 	render() {
 // 		const { countState } = this.props
-// 		return <div>Comps_layout_App</div>
+// 		return <div>Comps_Map</div>
 // 	}
 // }
 
@@ -48,3 +57,5 @@ export const Comps_layout_App = (_props: typeof defaultProps) => {
 //   total: models.cart.total,
 //   eligibleItems: models.cart.wouldGetFreeShipping,
 // }));
+
+ 
