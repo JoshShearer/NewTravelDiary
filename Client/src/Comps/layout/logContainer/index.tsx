@@ -1,14 +1,10 @@
 import React, { useEffect } from 'react';
-// import useSelector from 'reselect';
+
 import { Comps_Map_BaseMap } from '#src/Comps/Map/BaseMap';
 import { createStructuredSelector } from '#src/models/utils'
 import { useSelector } from '#src/models/hooks';
 
-
 import { RootState, Actions, dispatch, store } from '#src/models/store'
-
-
-
 
 const defaultProps = {
   entry: {

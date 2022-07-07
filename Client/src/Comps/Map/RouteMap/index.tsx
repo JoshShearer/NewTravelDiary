@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-// import useSelector from 'reselect';
+import { Comps_Map_BaseMap } from '#src/Comps/Map/BaseMap';
 
-// import { createStructuredSelector } from '#src/models/utils'
-// import { useSelector } from '#src/models/hooks';
+import { createStructuredSelector } from '#src/models/utils'
+import { useSelector } from '#src/models/hooks';
 
 
 // import { RootState, Actions, dispatch, store } from '#src/models/store'
@@ -14,9 +14,9 @@ const defaultProps = {
   idKey?: string;
   children?: JSX.Element;
 };
-// const selector = createStructuredSelector({
-//    item: (root) => root.stores,
-// })
+const selector = createStructuredSelector({
+  entryData: (root) => root.models_dEntry
+})
 
 export const Comps_Map_RouteMap = (_props: typeof defaultProps) => {
   const props = { ...defaultProps, ..._props };
@@ -35,7 +35,7 @@ export const Comps_Map_RouteMap = (_props: typeof defaultProps) => {
 
 
   return (
-    <div className="Comps_Map_RouteMap">
+    <div className="Comps_Map\RouteMap">
         <p>Comps_Map\RouteMap</p>
     </div>
   );
