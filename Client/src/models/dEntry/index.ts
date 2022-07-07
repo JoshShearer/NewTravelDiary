@@ -1,26 +1,30 @@
 import { createModel, RematchDispatch } from '@rematch/core';
 import type { RootModel } from '#src/models/model';
 
-type defaultState = [
-  {
-    id: number;
-    title: string;
-    info: string;
-    date: Date;
-    map: {
-      gps: {
-        lat: number;
-        lng: number;
-      },
-      location: {
-        address: string;
-        city: string;
-        state: string;
-        country: string;
-      },
-    };
-  }
-];
+type defaultState = {
+  tempTitle: string;
+  tempInfo: string;
+  entryData: [
+    {
+      id: number;
+      title: string;
+      info: string;
+      date: Date;
+      map: {
+        gps: {
+          lat: number;
+          lng: number;
+        };
+        location: {
+          address: string;
+          city: string;
+          state: string;
+          country: string;
+        };
+      };
+    }
+  ];
+};
 
 export const models_dEntry = createModel<RootModel>()({
   state: [
@@ -48,6 +52,18 @@ export const models_dEntry = createModel<RootModel>()({
       return {
         ...state,
         ...payload,
+      };
+    },
+    setTitle(state, payload: string) {
+      return {
+        ...state,
+        tempTitle: payload,
+      };
+    },
+    setInfo(state, payload: string) {
+      return {
+        ...state,
+        tempInfo: payload,
       };
     },
   },

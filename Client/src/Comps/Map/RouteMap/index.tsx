@@ -1,13 +1,10 @@
 import React, { useEffect } from 'react';
-<<<<<<< HEAD:Client/src/Comps/Map/index.tsx
 import GoogleMapReact from 'google-map-react';
-import Marker from './Marker';
-import { Comps_misc_Spinner } from '../misc/spinner';
+import { Comps_Map_Marker } from '#src/Comps/Map/Marker';
+import { Comps_misc_Spinner } from '#src/Comps/misc/Spinner';
 import isEmpty from 'lodash.isempty'
 // import useSelector from 'reselect';
-=======
 import { Comps_Map_BaseMap } from '#src/Comps/Map/BaseMap';
->>>>>>> c08d3e05642ab4a116e49789faca3457970fcffc:Client/src/Comps/Map/RouteMap/index.tsx
 
 import { createStructuredSelector } from '#src/models/utils'
 import { useSelector } from '#src/models/hooks';
@@ -17,15 +14,16 @@ import { useSelector } from '#src/models/hooks';
 
 
 const defaultProps = {
-  mapsize: 8,
+  mapSize: 8,
   location: [0,0],
   idKey: 'default',
 } as {
-  mapsize: number,
+  mapSize: number,
   location: [number, number]
   idKey?: string;
   children?: JSX.Element;
 };
+
 const selector = createStructuredSelector({
   entryData: (root) => root.models_dEntry
 })
@@ -47,7 +45,6 @@ export const Comps_Map_RouteMap = (_props: typeof defaultProps) => {
 
 
   return (
-<<<<<<< HEAD:Client/src/Comps/Map/index.tsx
     <div style={props.mapSize}>
       {!isEmpty(props.location) ? (
       <GoogleMapReact
@@ -63,25 +60,9 @@ export const Comps_Map_RouteMap = (_props: typeof defaultProps) => {
         
       </GoogleMapReact>)
       :<Comps_misc_Spinner/>}
-
-=======
-    <div className="Comps_Map\RouteMap">
-        <p>Comps_Map\RouteMap</p>
->>>>>>> c08d3e05642ab4a116e49789faca3457970fcffc:Client/src/Comps/Map/RouteMap/index.tsx
-    </div>
+  </div>
+    // <div className="Comps_Map_RouteMap">
+    //     <p>Comps_Map_RouteMap</p>
+    // </div>
   );
-};
-
-// export class Comps_Map\RouteMap extends React.PureComponent<Props> {
-// 	render() {
-// 		const { countState } = this.props
-// 		return <div>Comps_Map\RouteMap</div>
-// 	}
-// }
-
-// const selection = store.select((models) => ({
-//   total: models.cart.total,
-//   eligibleItems: models.cart.wouldGetFreeShipping,
-// }));
-
- 
+}

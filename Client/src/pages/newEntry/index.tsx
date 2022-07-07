@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { Comps_Navigation_Footer } from '#src/Comps/Navigation/Footer';
-
+import { Comps_layout_entryForm } from '#src/Comps/layout/entryForm';
 export const pages_newEntry = () => {
   return (
     <div>
@@ -12,7 +12,7 @@ export const pages_newEntry = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1>pages_newEntry</h1>
+        <Comps_layout_entryForm />
         <Comps_Navigation_Footer />
       </main>
     </div>

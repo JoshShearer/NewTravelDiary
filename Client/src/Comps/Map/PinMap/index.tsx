@@ -1,61 +1,56 @@
 import React, { useEffect } from 'react';
-// import useSelector from 'reselect';
-
-// import { createStructuredSelector } from '#src/models/utils'
-// import { useSelector } from '#src/models/hooks';
-
+import GoogleMapReact from 'google-map-react';
+import { Comps_Map_Marker } from '#src/Comps/Map/Marker';
+import { Comps_misc_Spinner } from '#src/Comps/misc/Spinner';
+import isEmpty from 'lodash.isempty';
 
 // import { RootState, Actions, dispatch, store } from '#src/models/store'
 
-import { Comps_misc_placeholder } from '#src/Comps';
-
-
-
 const defaultProps = {
+  location: {
+    lat: 24,
+    lng: 24,
+  },
+  mapSize: { width: "100%", height: "100%" },
+  zoom: 8,
   idKey: 'default',
-} as {
+} as unknown as {
+  location: {
+    lat: number;
+    lng: number;
+  };
+  mapSize?: {width: string, height: string };
+  zoom?: number;
   idKey?: string;
   children?: JSX.Element;
 };
 // const selector = createStructuredSelector({
 //    item: (root) => root.stores,
 // })
-
-export const Comps_Map\PinMap = (_props: typeof defaultProps) => {
+export const Comps_Map_PinMap = (_props: typeof defaultProps) => {
   const props = { ...defaultProps, ..._props };
-
-  
-  // useEffect(() => {
-    
-  // },[]);
-
-  // const selected = useSelector((state) => selector(state, props));
-
-  // const selected = useSelector(
-  //   (rootState: RootState) => rootState.model.statevar //capturing state slice (not internal selector)
-  // );
-  // const selected = useSelector(store.select.model.selectorFunction); //using state and selector (internal selector function)
-
+  console.log("🚀 ~ file: index.tsx ~ line 40 ~ props.location", props.location)
+  console.log("🚀 ~ file: index.tsx ~ line 31 ~ props.zoom", props.zoom)
 
   return (
-    <div className="Comps_Map\PinMap">
-      <Comps_misc_placeholder>
-        <p>Comps_Map\PinMap</p>
-      </Comps_misc_placeholder>
+    <div className="Comps_Map_BaseMap">
+      <div style={props.mapSize}>
+        {!isEmpty(props.location) ? (
+          <GoogleMapReact
+            bootstrapURLKeys={{ key: "AIzaSyCBC8EA64V1xJr6hoFqUCvwDFo4o9Lp2gM" }}
+            center={[props.location.lat,props.location.lng]}
+            zoom={props.zoom}
+          >
+            <Comps_Map_Marker
+              text={'Here'}
+              lat={props.location.lat}
+              lng={props.location.lng}
+            />
+          </GoogleMapReact>
+        ) : (
+          <Comps_misc_Spinner />
+        )}
+      </div>
     </div>
   );
 };
-
-// export class Comps_Map\PinMap extends React.PureComponent<Props> {
-// 	render() {
-// 		const { countState } = this.props
-// 		return <div>Comps_Map\PinMap</div>
-// 	}
-// }
-
-// const selection = store.select((models) => ({
-//   total: models.cart.total,
-//   eligibleItems: models.cart.wouldGetFreeShipping,
-// }));
-
- 

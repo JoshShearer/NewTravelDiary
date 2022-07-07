@@ -12,7 +12,7 @@ const TravelDiary: NextPage = () => {
     return (
         <div className="bg-stone-800">
             <Head>
-                <title>Token Exchange</title>
+                <title>TravelDiary</title>
                 <meta name="description" content="Your New Token Exchange" />
                 <link
                     rel="icon"
