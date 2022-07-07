@@ -1,4 +1,4 @@
-// Marker.js
+// Comps_Map_Marker.js
 import React from 'react';
 // import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -19,20 +19,18 @@ const Wrapper = styled.div`
     cursor: grab;
 `;
 
-const Marker = ({ text, onClick }) => (
+export const Comps_Map_Marker = ({ text, onClick }) => (
     <Wrapper
         alt={text}
         onClick={onClick}
     />
 );
 
-// Marker.defaultProps = {
+// Comps_Map_Marker.defaultProps = {
 //     onClick: null,
 // };
 
-// Marker.propTypes = {
+// Comps_Map_Marker.propTypes = {
 //     onClick: PropTypes.func,
 //     text: PropTypes.string.isRequired,
 // };
-
-export default Marker;

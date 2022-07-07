@@ -7,7 +7,7 @@ import React from 'react';
 
 // import { RootState, Actions, dispatch, store } from '#src/models/store'
 
-import { Comps_misc_placeholder } from '#src/Comps';
+// import { Comps_misc_placeholder } from '#src/Comps';
 
 
 
@@ -33,9 +33,9 @@ export const Comps_misc_Spinner = (_props: typeof defaultProps) => {
 
   return (
     <div className="Comps_misc_Spinner">
-      <Comps_misc_placeholder>
+      {/* <Comps_misc_placeholder> */}
         <p>Comps_misc_Spinner</p>
-      </Comps_misc_placeholder>
+      {/* </Comps_misc_placeholder> */}
     </div>
   );
 };

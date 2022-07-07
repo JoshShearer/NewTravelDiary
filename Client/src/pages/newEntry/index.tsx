@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { Comps_Navigation_Footer } from '#src/Comps/Navigation/Footer';
 
 export const pages_newEntry = () => {
   return (
@@ -12,6 +13,7 @@ export const pages_newEntry = () => {
       </Head>
       <main>
         <h1>pages_newEntry</h1>
+        <Comps_Navigation_Footer />
       </main>
     </div>
   );

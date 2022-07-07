@@ -3,33 +3,33 @@ import { screen } from "@testing-library/react";
 const expect = require('chai').expect
 import userEvent from "@testing-library/user-event";
 import { renderWithRematchStore } from "../../../test/utils";
-import { Comps_Map } from ".";
+import { Comps_Map\BaseMap } from ".";
 import { store, dispatch } from "#src/models/store";
 
-describe("Comps_Map", () => {
+describe("Comps_Map\BaseMap", () => {
   beforeEach(() => dispatch({ type: "RESET" })); //clear the state
   // it("should render the 'rename' component", () => {
-  //   renderWithRematchStore(<Comps_Map />, store);
+  //   renderWithRematchStore(<Comps_Map\BaseMap />, store);
   //   expect(screen.queryByText("Clear")).toBeInTheDocument();
   //   expect(screen.queryByText("Your total cart:")).toBeInTheDocument();
   //   expect(screen.queryByText("$0.00")).toBeInTheDocument();
   // });
   
-  // it("should render a '' on the Comps_Map and adjust the ''", async () => {
+  // it("should render a '' on the Comps_Map\BaseMap and adjust the ''", async () => {
   //   await dispatch.shop.getProducts();
   //   const [oneThing] = store.getState().rename;
-  //   dispatch.Comps_Map.rename(oneProduct);
-  //   renderWithRematchStore(<Comps_Map />, store);
+  //   dispatch.Comps_Map\BaseMap.rename(oneProduct);
+  //   renderWithRematchStore(<Comps_Map\BaseMap />, store);
   //   expect(await screen.findByRole("list")).toBeInTheDocument();
   //   expect(screen.queryByRole("listitem")).toBeInTheDocument();
   //   expect(screen.getAllByText("$43.00")).toHaveLength(2);
   // });
 
-  // it("should reset the Comps_Map to his initial state", async () => {
+  // it("should reset the Comps_Map\BaseMap to his initial state", async () => {
   //   await dispatch.shop.getProducts();
   //   const [otherProduct] = store.getState().modelData;
-  //   dispatch.Comps_Map.rename(otherProduct);
-  //   renderWithRematchStore(<Comps_Map />, store);
+  //   dispatch.Comps_Map\BaseMap.rename(otherProduct);
+  //   renderWithRematchStore(<Comps_Map\BaseMap />, store);
   //   expect(await screen.findByRole("list")).toBeInTheDocument();
   //   expect(screen.queryByRole("listitem")).toBeInTheDocument();
   //   expect(screen.getAllByText("$43.00")).toHaveLength(2);

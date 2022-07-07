@@ -1,4 +1,6 @@
 import Head from 'next/head';
+import { Comps_layout_logs } from '#src/Comps';
+import { Comps_Navigation_Footer } from '#src/Comps/Navigation/Footer';
 
 export const pages_Logs = () => {
   return (
@@ -11,7 +13,8 @@ export const pages_Logs = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1>pages_Logs</h1>
+        <Comps_layout_logs />
+        <Comps_Navigation_Footer />
       </main>
     </div>
   );

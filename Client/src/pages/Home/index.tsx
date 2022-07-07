@@ -1,6 +1,11 @@
 import Head from 'next/head';
+<<<<<<< HEAD
 import { Comps_Navigation_Footer } from '#src/Comps/Navigation/Footer';
 import { Comps_Map_MyGoogleMap } from '#src/Comps/Map/MyGoogleMap';
+=======
+import { Comps_Map_MyGoogleMap } from '#src/Comps/Map/MyGoogleMap';
+import { Comps_Navigation_Footer } from '#src/Comps';
+>>>>>>> c08d3e05642ab4a116e49789faca3457970fcffc
 
 export const pages_Home = () => {
   return (
@@ -27,3 +32,4 @@ export const navigation = {
   comp: 'pages_Home',
   layout: 'Comps_layout_main',
 };
+
