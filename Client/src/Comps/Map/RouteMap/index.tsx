@@ -1,14 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // import useSelector from 'reselect';
 
-// import { createStructureSelector } from '#src/models/util'
-// import { userSelector } from '#src/models/hooks';
+// import { createStructuredSelector } from '#src/models/utils'
+// import { useSelector } from '#src/models/hooks';
 
 
 // import { RootState, Actions, dispatch, store } from '#src/models/store'
-
-// import { Comps_misc_placeholder } from '#src/Comps';
-
 
 
 const defaultProps = {
@@ -21,8 +18,14 @@ const defaultProps = {
 //    item: (root) => root.stores,
 // })
 
-export const Comps_misc_Spinner = (_props: typeof defaultProps) => {
+export const Comps_Map_RouteMap = (_props: typeof defaultProps) => {
   const props = { ...defaultProps, ..._props };
+
+  
+  // useEffect(() => {
+    
+  // },[]);
+
   // const selected = useSelector((state) => selector(state, props));
 
   // const selected = useSelector(
@@ -32,18 +35,16 @@ export const Comps_misc_Spinner = (_props: typeof defaultProps) => {
 
 
   return (
-    <div className="Comps_misc_Spinner">
-      {/* <Comps_misc_placeholder> */}
-        <p>Comps_misc_Spinner</p>
-      {/* </Comps_misc_placeholder> */}
+    <div className="Comps_Map_RouteMap">
+        <p>Comps_Map\RouteMap</p>
     </div>
   );
 };
 
-// export class Comps_misc_Spinner extends React.PureComponent<Props> {
+// export class Comps_Map\RouteMap extends React.PureComponent<Props> {
 // 	render() {
 // 		const { countState } = this.props
-// 		return <div>Comps_misc_Spinner</div>
+// 		return <div>Comps_Map\RouteMap</div>
 // 	}
 // }
 
