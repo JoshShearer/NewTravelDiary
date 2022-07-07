@@ -1,4 +1,6 @@
 import Head from 'next/head';
+import { Comps_Navigation_Footer } from '#src/Comps/Navigation/Footer';
+import { Comps_Map_MyGoogleMap } from '#src/Comps/Map/MyGoogleMap';
 
 export const pages_Home = () => {
   return (
@@ -11,7 +13,8 @@ export const pages_Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1>pages_Home</h1>
+        <Comps_Map_MyGoogleMap />
+        <Comps_Navigation_Footer />
       </main>
     </div>
   );

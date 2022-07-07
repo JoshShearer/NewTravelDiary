@@ -57,7 +57,7 @@ export const models_Location = createModel<RootModel>()({
     setCurrentLoc(state, payload: defaultState) {
       return {
         ...state,
-        gps: payload.gps,
+        gps: payload.gps, 
         location: payload.location
       };
     },
