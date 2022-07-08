@@ -18,7 +18,7 @@
     "heroku-prebuild": "export NPM_CONFIG_PRODUCTION=false; export NODE_ENV=; NPM_CONFIG_PRODUCTION=false NODE_ENV=development npm install --only=dev --dev",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
     "start": "nodemon server.js",
-    "client": "npm start --prefix client",
+    "client": "npm run dev --prefix Client",
     "dev": "concurrently -n 'server,client' -c 'red,green'  \"nodemon server.js\" \"npm run client\""
   },
   "engines": {

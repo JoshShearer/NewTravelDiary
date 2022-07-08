@@ -47,13 +47,12 @@ export const Comps_layout_entryForm = (_props: typeof defaultProps) => {
     const newData = {
       title: selected.title,
       info: selected.info,
-      date: getDate,
-      time: getTime,
-      map: {
-        gps: selected.gps,
-        location: selected.location,
-      },
+      date: getDate(),
+      time: getTime(),
+      gps: selected.gps,
+      location: selected.location,
     };
+    console.log("🚀 ~ file: index.tsx ~ line 57 ~ logEntry ~ newData", newData)
     putDataToDB(newData, selected.entryData);
   };
 

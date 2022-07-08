@@ -7,7 +7,7 @@ import { useSelector } from '#src/models/hooks';
 import { RootState, Actions, dispatch, store } from '#src/models/store';
 
 import { Comps_Map_Marker } from '#src/Comps';
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const InfoDiv = styled.main`
   bottom-margin: 200px;
@@ -44,20 +44,10 @@ export const Comps_Map_MyGoogleMap = (_props: typeof defaultProps) => {
           dispatch.models_Location.setGPS(coords);
         } else {
           console.log('Geolocation Permission Denied');
-          // dispatch.models_({
-          //   center: [37.80552, -122.3237437],
-          //   lat: 37.80552,
-          //   lng: -122.3237437,
-          // });
         }
       })
       .catch((error) => {
         console.log('Geolocation permission denied ', error.message);
-        // this.dispatch.models_({
-        //   center: [37.80552, -122.3237437],
-        //   lat: 37.80552,
-        //   lng: -122.3237437,
-        // });
       });
   }, []);
 
@@ -239,7 +229,7 @@ export const Comps_Map_MyGoogleMap = (_props: typeof defaultProps) => {
   );
 };
 
-// export class Comps_Map\MyGoogleMap extends React.PureComponent<Props> {
+// export class Comps_Map_MyGoogleMap extends React.PureComponent<Props> {
 // 	render() {
 // 		const { countState } = props
 // 		return <div>Comps_Map\MyGoogleMap</div>

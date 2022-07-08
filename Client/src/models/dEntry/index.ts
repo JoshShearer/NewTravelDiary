@@ -4,36 +4,40 @@ import type { RootModel } from '#src/models/model';
 type defaultState = {
   tempTitle: string;
   tempInfo: string;
+  tempAddress: string;
   entryData: [
     {
       id: number;
       title: string;
       info: string;
-      date: Date;
-      map: {
-        gps: {
-          lat: number;
-          lng: number;
-        };
-        location: {
-          address: string;
-          city: string;
-          state: string;
-          country: string;
-        };
+      date: string;
+      time: string;
+      gps: {
+        lat: number;
+        lng: number;
+      };
+      location: {
+        address: string;
+        city: string;
+        state: string;
+        country: string;
       };
     }
   ];
 };
 
 export const models_dEntry = createModel<RootModel>()({
-  state: [
-    {
-      id: 0,
-      title: '',
-      info: '',
-      date: '',
-      map: {
+  state: {
+    tempTitle: '',
+    tempInfo: '',
+    tempAddress: '',
+    entryData: [
+      {
+        id: 0,
+        title: '',
+        info: '',
+        date: '',
+        time: '',
         gps: {
           lat: 0,
           lng: 0,
@@ -45,13 +49,13 @@ export const models_dEntry = createModel<RootModel>()({
           country: '',
         },
       },
-    },
-  ] as any as defaultState,
+    ],
+  } as any as defaultState,
   reducers: {
-    setNewEntry(state, payload: defaultState) {
+    setEntries(state, payload: defaultState) {
       return {
         ...state,
-        ...payload,
+        entryData: payload,
       };
     },
     setTitle(state, payload: string) {
@@ -66,6 +70,12 @@ export const models_dEntry = createModel<RootModel>()({
         tempInfo: payload,
       };
     },
+    setAddress(state, payload: string) {
+      return {
+        ...state,
+        tempAddress: payload,
+      }
+    }
   },
   // selectors: (slice, createSelector, hasProps) => ({
 

@@ -11,7 +11,7 @@ const defaultProps = {
     lat: 24,
     lng: 24,
   },
-  mapSize: { width: "100%", height: "100%" },
+  mapSize: { width: "10%", height: "10%" },
   zoom: 8,
   idKey: 'default',
 } as unknown as {
@@ -30,7 +30,9 @@ const defaultProps = {
 export const Comps_Map_PinMap = (_props: typeof defaultProps) => {
   const props = { ...defaultProps, ..._props };
   console.log("🚀 ~ file: index.tsx ~ line 40 ~ props.location", props.location)
+  console.log("🚀 ~ file: index.tsx ~ line 33 ~ props", props)
   console.log("🚀 ~ file: index.tsx ~ line 31 ~ props.zoom", props.zoom)
+  console.log("🚀 ~ file: index.tsx ~ line 38 ~ {props.mapSize", props.mapSize)
 
   return (
     <div className="Comps_Map_BaseMap">
@@ -38,7 +40,7 @@ export const Comps_Map_PinMap = (_props: typeof defaultProps) => {
         {!isEmpty(props.location) ? (
           <GoogleMapReact
             bootstrapURLKeys={{ key: "AIzaSyCBC8EA64V1xJr6hoFqUCvwDFo4o9Lp2gM" }}
-            center={[props.location.lat,props.location.lng]}
+            center={props.location}
             zoom={props.zoom}
           >
             <Comps_Map_Marker

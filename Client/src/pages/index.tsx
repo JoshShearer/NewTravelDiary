@@ -1,14 +1,37 @@
+import { useEffect } from 'react';
 import type { NextPage } from 'next'
 import Head from 'next/head';
-import { init } from '@rematch/core';
-// import { Comps_layout_App } from '#src/Comps/layout/App';
+import { getDataFromDb } from '#src/api';
+import { RootState, Actions, dispatch, store } from '#src/models/store';
+
 import { Comps_Navigation_Footer } from '#src/Comps/Navigation/Footer';
-// import { pages_Home} from '#src/pages/Home';
-import { store } from '#src/models/store';
 import * as serviceWorker from '../serviceWorker';
 import pages_Home from './Home/index';
 
+import { createStructuredSelector } from '#src/models/utils';
+import { useSelector } from '#src/models/hooks';
+
+const selector = createStructuredSelector({
+    entryData: (root) => root.models_dEntry.entryData
+  });
+
+
 const TravelDiary: NextPage = () => {
+    const selected = useSelector((state) => selector(state));
+
+    useEffect(() => {
+        const Data = getDataFromDb()
+        .then((data)=>{
+          console.log("async Data Get", data)
+          if(JSON.stringify(dispatch.models_dEntry.entryData) !== JSON.stringify(data)){
+            dispatch.models_dEntry.setEntries(data);
+        }})
+        .catch((error=> {
+          console.log("DataHandling Error ", error.message)
+        }))
+    },[]);
+
+    
     return (
         <div className="bg-stone-800">
             <Head>

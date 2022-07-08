@@ -12,9 +12,14 @@ import { CheckIcon } from '@heroicons/react/outline'
 
 
 const defaultProps = {
+  open: false,
   message: "",
   idKey: 'default',
-} as {
+} as unknown as {
+  open: boolean,
+  setOpen?: () => void,
+  actionCall?: () => void,
+  route?: string,
   message: string,
   idKey?: string;
   children?: JSX.Element;
@@ -25,7 +30,7 @@ const defaultProps = {
 
 export const Comps_misc_Modal = (_props: typeof defaultProps) => {
   const props = { ...defaultProps, ..._props };
-  const [open, setOpen] = useState(true)
+  // const [open, setOpen] = useState(true)
 
   
   // useEffect(() => {
@@ -44,8 +49,8 @@ export const Comps_misc_Modal = (_props: typeof defaultProps) => {
 
 
   return (
-    <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={setOpen}>
+    <Transition.Root show={props.open} as={Fragment}>
+      <Dialog as="div" className="relative z-10" onClose={props.setOpen}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -71,25 +76,30 @@ export const Comps_misc_Modal = (_props: typeof defaultProps) => {
             >
               <Dialog.Panel className="relative bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-sm sm:w-full sm:p-6">
                 <div>
-                  <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
+                  {/* <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
                     <CheckIcon className="h-6 w-6 text-green-600" aria-hidden="true" />
-                  </div>
+                  </div> */}
                   <div className="mt-3 text-center sm:mt-5">
                     <Dialog.Title as="h3" className="text-lg leading-6 font-medium text-gray-900">
                       {props.message}
                     </Dialog.Title>
                   </div>
                 </div>
-                <div className="mt-5 sm:mt-6">
-                  <Link href="/Home" >
+                <div className="mt-5 sm:mt-6 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense">
+                  <Link href={props.route} >
                     <button
                       type="button"
-                      className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
-                      onClick={() => setOpen(false)}
+                      className="inline-flex justify-center w-full rounded-md border border-orange-500 shadow-sm px-4 py-2 bg-white text-base font-medium text-orange-500 hover:bg-orange-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-black sm:text-sm"
+                      onClick={() => props.setOpen(false)}
                     >
                       Ok
                     </button>
                   </Link>
+                  <button 
+                  className="inline-flex justify-center w-full rounded-md border border-orange-500 shadow-sm px-4 py-2 bg-white text-base font-medium text-orange-500 hover:bg-orange-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-black sm:text-sm"
+                  onClick={() => {props.setOpen(false), props.actionCall()}}>
+                    Cancel
+                  </button>
                 </div>
               </Dialog.Panel>
             </Transition.Child>
@@ -99,18 +109,4 @@ export const Comps_misc_Modal = (_props: typeof defaultProps) => {
     </Transition.Root>
   )
 }
-
-
-// export class Comps_misc\Modal extends React.PureComponent<Props> {
-// 	render() {
-// 		const { countState } = this.props
-// 		return <div>Comps_misc\Modal</div>
-// 	}
-// }
-
-// const selection = store.select((models) => ({
-//   total: models.cart.total,
-//   eligibleItems: models.cart.wouldGetFreeShipping,
-// }));
-
  

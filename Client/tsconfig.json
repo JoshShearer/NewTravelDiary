@@ -19,6 +19,6 @@
       "#src/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "./src/**/*.ts", "./src/**/*.tsx", "src/Pages/_app.js", "src/Pages/index.js"],
+  "include": ["next-env.d.ts", "./src/**/*.ts", "./src/**/*.tsx", "src/Pages/_app.js", "src/Pages/index.js", "src/Comps/Map/MyGoogleMap/index.tsx", "src/models/Location/index.js", "src/Comps/Map/BaseMap/index.jsx"],
   "exclude": ["node_modules", "creditor", "test"]
 }
