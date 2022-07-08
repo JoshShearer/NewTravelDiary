@@ -8,10 +8,10 @@ import isEmpty from 'lodash.isempty';
 
 const defaultProps = {
   location: {
-    lat: 24,
-    lng: 24,
+    lat: 37.80552,
+    lng: -122.3237437,
   },
-  mapSize: { width: "10%", height: "10%" },
+  mapSize: { width: "50%", height: "50%" },
   zoom: 8,
   idKey: 'default',
 } as unknown as {
@@ -39,7 +39,7 @@ export const Comps_Map_PinMap = (_props: typeof defaultProps) => {
       <div style={props.mapSize}>
         {!isEmpty(props.location) ? (
           <GoogleMapReact
-            bootstrapURLKeys={{ key: "AIzaSyCBC8EA64V1xJr6hoFqUCvwDFo4o9Lp2gM" }}
+            bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLEMAPS_API }}
             center={props.location}
             zoom={props.zoom}
           >

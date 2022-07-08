@@ -39,8 +39,8 @@ export const models_dEntry = createModel<RootModel>()({
         date: '',
         time: '',
         gps: {
-          lat: 0,
-          lng: 0,
+          lat: 37.80552,
+          lng: -122.3237437,
         },
         location: {
           address: '',

@@ -14,7 +14,10 @@ type defaultState = {
   };
   map: {
     draggable: boolean;
-    center: [number, number];
+    center: {
+      lat: number;
+      lng: number;
+    };
     mapApiLoaded: false;
     mapInstance: null;
     mapApi: null;
@@ -41,24 +44,27 @@ export const models_Location = createModel<RootModel>()({
     },
     map: {
       draggable: false,
-      center: [37.80552, -122.3237437],
+      center: {
+        lat: 37.80552,
+        lng: -122.3237437
+      },
       mapApiLoaded: false,
       mapInstance: null,
       mapApi: null,
       geoCoder: null,
       places: [],
-      zoom: 9,
+      zoom: 11,
       address: '',
       lat: null,
       lng: null,
     },
-  } as defaultState,
+  } as unknown as defaultState,
   reducers: {
     setCurrentLoc(state, payload: defaultState) {
       return {
         ...state,
-        gps: payload.gps, 
-        location: payload.location
+        gps: payload.gps,
+        location: payload.location,
       };
     },
     setGPS(state, payload: defaultState) {
@@ -76,23 +82,34 @@ export const models_Location = createModel<RootModel>()({
         },
       };
     },
-    setMouseLoc(state, payload: {lat:number,lng:number}) {
+    setMouseLoc(state, payload: { lat: number; lng: number }) {
       return {
         ...state,
         map: {
           ...state.map,
           lat: payload.lat,
-          lng: payload.lng
-        }
-      }
+          lng: payload.lng,
+        },
+      };
     },
     setMapCenter(state, payload) {
-      return{
+      return {
         ...state,
         map: {
           ...state.map,
           center: payload.center,
-          zoom: payload.zoom
+          zoom: payload.zoom,
+        },
+      };
+    },
+    setAPILoad(state, payload) {
+      return {
+        ...state,
+        map: {
+          ...state.map,
+          mapApiLoaded: payload.mapApiLoaded,
+          mapInstance: payload.mapInstance,
+          mapApi: payload.mapApi,
         }
       }
     }

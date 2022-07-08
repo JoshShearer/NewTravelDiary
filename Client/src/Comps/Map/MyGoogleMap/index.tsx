@@ -13,6 +13,11 @@ const InfoDiv = styled.main`
   bottom-margin: 200px;
 `;
 
+const Wrapper = styled.div`
+  width: 100%;
+  height: 90%;
+`;
+
 const defaultProps = {
   idKey: 'default',
 } as {
@@ -89,17 +94,20 @@ export const Comps_Map_MyGoogleMap = (_props: typeof defaultProps) => {
   };
 
   const apiHasLoaded = (map, maps) => {
-    dispatch.models_({
+  console.log("🚀 ~ file: index.tsx ~ line 97 ~ apiHasLoaded ~ maps", maps)
+  console.log("🚀 ~ file: index.tsx ~ line 97 ~ apiHasLoaded ~ map", map)
+    dispatch.models_Location.setAPILoad({
       mapApiLoaded: true,
       mapInstance: map,
       mapApi: maps,
     });
 
-    _generateAddress();
+    _generateAddress({mapApi: maps});
   };
 
-  const _generateAddress = () => {
-    const { mapApi } = state;
+  const _generateAddress = (mapApi) => {
+  console.log("🚀 ~ file: index.tsx ~ line 109 ~ mapApi", mapApi)
+    // const { mapApi } = selected.mapApi;
 
     const geocoder = new mapApi.Geocoder();
 
@@ -187,7 +195,7 @@ export const Comps_Map_MyGoogleMap = (_props: typeof defaultProps) => {
   };
 
   return (
-    <div className="Comps_Map_MyGoogleMap">
+    <Wrapper>
       <GoogleMapReact
         center={selected.center}
         zoom={selected.zoom}
@@ -225,18 +233,6 @@ export const Comps_Map_MyGoogleMap = (_props: typeof defaultProps) => {
           Address: <span>{selected.address}</span>
         </div>
       </InfoDiv>
-    </div>
+    </Wrapper>
   );
 };
-
-// export class Comps_Map_MyGoogleMap extends React.PureComponent<Props> {
-// 	render() {
-// 		const { countState } = props
-// 		return <div>Comps_Map\MyGoogleMap</div>
-// 	}
-// }
-
-// const selection = store.select((models) => ({
-//   total: models.cart.total,
-//   eligibleItems: models.cart.wouldGetFreeShipping,
-// }));

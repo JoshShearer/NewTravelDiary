@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
-import { Comps_Map_PinMap } from '#src/Comps/Map/PinMap';
+import { Comps_Map_BaseMap } from '#src/Comps/Map/BaseMap';
 import { Comps_layout_locTable } from '#src/Comps/layout/locTable';
 import { Comps_layout_imageHandler } from '#src/Comps/layout/imageHandler';
 import { putDataToDB } from '#src/api';
@@ -131,7 +131,7 @@ export const Comps_layout_entryForm = (_props: typeof defaultProps) => {
                 />
               </div>
             </div>
-            {/* <Comps_Map_PinMap location={selected.gps}/> */}
+            <Comps_Map_BaseMap location={selected.gps}/>
             <Comps_layout_locTable
               data={Object.assign(
                 selected.gps,
