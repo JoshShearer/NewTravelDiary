@@ -86,7 +86,7 @@ export const Comps_layout_logContainer = (_props: typeof defaultProps) => {
                   </td>
                   <td className="whitespace-nowrap px-3 text-sm text-gray-500  ">
                     {!editMode ? (
-                      <span className="grow">{props.entry.title}</span>
+                      <span className="grow text-2xl ">{props.entry.title}</span>
                     ) : (
                       <span className="grow">
                         <input

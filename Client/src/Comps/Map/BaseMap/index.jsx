@@ -25,7 +25,7 @@ export const Comps_Map_BaseMap = (props) => {
           />
         </GoogleMapReact>
       ) : (
-        <Spinner />
+        <Comps_misc_Spinner />
       )}
     </div>
   );

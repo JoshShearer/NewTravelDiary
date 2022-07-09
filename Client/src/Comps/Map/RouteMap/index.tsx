@@ -1,68 +1,54 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import GoogleMapReact from 'google-map-react';
 import { Comps_Map_Marker } from '#src/Comps/Map/Marker';
 import { Comps_misc_Spinner } from '#src/Comps/misc/Spinner';
-import isEmpty from 'lodash.isempty'
-// import useSelector from 'reselect';
 import { Comps_Map_BaseMap } from '#src/Comps/Map/BaseMap';
+import { Comps_misc_Modal } from '#src/Comps/misc/Modal';
+import isEmpty from 'lodash.isempty';
 
-import { createStructuredSelector } from '#src/models/utils'
+import { createStructuredSelector } from '#src/models/utils';
 import { useSelector } from '#src/models/hooks';
-
 
 // import { RootState, Actions, dispatch, store } from '#src/models/store'
 
-
 const defaultProps = {
-  mapSize: 8,
-  location: [0,0],
   idKey: 'default',
 } as {
-  mapSize: number,
-  location: [number, number]
   idKey?: string;
   children?: JSX.Element;
 };
 
 const selector = createStructuredSelector({
-  entryData: (root) => root.models_dEntry
-})
+  entryData: (root) => root.models_dEntry.entryData,
+});
 
 export const Comps_Map_RouteMap = (_props: typeof defaultProps) => {
   const props = { ...defaultProps, ..._props };
+  const [modal, setModal] = useState(false);
 
-  
-  // useEffect(() => {
-    
-  // },[]);
+  const selected = useSelector((state) => selector(state, props));
 
-  // const selected = useSelector((state) => selector(state, props));
-
-  // const selected = useSelector(
-  //   (rootState: RootState) => rootState.model.statevar //capturing state slice (not internal selector)
-  // );
-  // const selected = useSelector(store.select.model.selectorFunction); //using state and selector (internal selector function)
-
-
+  const currentLocation = selected.entryData[Math.round(selected.entryData.length / 2)];
+  console.log('🚀 ~ file: index.tsx ~ line 34 ~ currentLocation', currentLocation);
+  const mapSize = { height: '97vh', width: '100%' }
   return (
-    <div style={props.mapSize}>
-      {!isEmpty(props.location) ? (
-      <GoogleMapReact
-        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLEMAPS_API }}
-        center={props.location}
-        zoom={props.zoom}
-
-      >
-      <Marker
-        text={"Here"}
-        lat={props.location.lat}
-        lng={props.location.lng}/>
-        
-      </GoogleMapReact>)
-      :<Comps_misc_Spinner/>}
-  </div>
-    // <div className="Comps_Map_RouteMap">
-    //     <p>Comps_Map_RouteMap</p>
-    // </div>
+    <React.Fragment>
+      <div style={mapSize}>
+        {!isEmpty(currentLocation) ? (
+          <Comps_Map_BaseMap
+            places={selected.entryData}
+            currentLocation={currentLocation.gps}
+            mapSize={mapSize}
+          />
+        ) : (
+          <Comps_misc_Modal
+            message="No entries found.  Start your first entry"
+            open={modal}
+            setOpen={setModal}
+            route="/newEntry"
+          />
+        )}
+      </div>
+    </React.Fragment>
   );
-}
+};

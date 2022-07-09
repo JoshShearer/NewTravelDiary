@@ -22,18 +22,20 @@ type defaultState = {
     mapInstance: null;
     mapApi: null;
     geoCoder: null;
-    places: [];
-    zoom: 9;
-    address: '';
-    lat: null;
-    lng: null;
+    places: null;
+    zoom: number;
+    address: string;
+    mouse: {
+      lat: number;
+      lng: number;
+    };
   };
 };
 
 export const models_Location = createModel<RootModel>()({
   state: {
     gps: {
-      lat: 37.80552,
+      lat: 35.80552,
       lng: -122.3237437,
     },
     location: {
@@ -45,8 +47,8 @@ export const models_Location = createModel<RootModel>()({
     map: {
       draggable: false,
       center: {
-        lat: 37.80552,
-        lng: -122.3237437
+        lat: 36.80552,
+        lng: -122.3237437,
       },
       mapApiLoaded: false,
       mapInstance: null,
@@ -55,8 +57,10 @@ export const models_Location = createModel<RootModel>()({
       places: [],
       zoom: 11,
       address: '',
-      lat: null,
-      lng: null,
+      mouse: {
+        lat: 37.80552,
+        lng: -122.3237437,
+      },
     },
   } as unknown as defaultState,
   reducers: {
@@ -67,10 +71,13 @@ export const models_Location = createModel<RootModel>()({
         location: payload.location,
       };
     },
-    setGPS(state, payload: defaultState) {
+    setMapGPS(state, payload: defaultState) {
       return {
         ...state,
-        ...payload,
+        map: {
+          ...state.map,
+          center: payload,
+        },
       };
     },
     setDrag(state, payload: defaultState) {
@@ -87,8 +94,10 @@ export const models_Location = createModel<RootModel>()({
         ...state,
         map: {
           ...state.map,
-          lat: payload.lat,
-          lng: payload.lng,
+          mouse: {
+            lat: payload.lat,
+            lng: payload.lng,
+          },
         },
       };
     },
@@ -110,9 +119,9 @@ export const models_Location = createModel<RootModel>()({
           mapApiLoaded: payload.mapApiLoaded,
           mapInstance: payload.mapInstance,
           mapApi: payload.mapApi,
-        }
-      }
-    }
+        },
+      };
+    },
   },
   // selectors: (slice, createSelector, hasProps) => ({
 

@@ -24,6 +24,7 @@ const defaultProps = {
   idKey?: string;
   children?: JSX.Element;
 };
+
 const selector = createStructuredSelector({
   draggable: (root) => root.models_Location.map.draggable,
   center: (root) => root.models_Location.map.center,
@@ -34,8 +35,8 @@ const selector = createStructuredSelector({
   places: (root) => root.models_Location.map.places,
   zoom: (root) => root.models_Location.map.zoom,
   address: (root) => root.models_Location.map.address,
-  lat: (root) => root.models_Location.map.lat,
-  lng: (root) => root.models_Location.map.lng,
+  lat: (root) => root.models_Location.map.mouse.lat,
+  lng: (root) => root.models_Location.map.mouse.lng,
 });
 
 export const Comps_Map_MyGoogleMap = (_props: typeof defaultProps) => {
@@ -45,8 +46,9 @@ export const Comps_Map_MyGoogleMap = (_props: typeof defaultProps) => {
     const response = setCurrentLocation()
       .then((coords) => {
         if (coords !== null) {
+          console.log("🚀 ~ file: index.tsx ~ line 48 ~ .then ~ coords", coords)
           console.log('Geolocation Success');
-          dispatch.models_Location.setGPS(coords);
+          dispatch.models_Location.setMapGPS(coords);
         } else {
           console.log('Geolocation Permission Denied');
         }
@@ -80,6 +82,8 @@ export const Comps_Map_MyGoogleMap = (_props: typeof defaultProps) => {
   };
 
   const _onChange = ({ center, zoom }) => {
+  console.log("🚀 ~ file: index.tsx ~ line 85 ~ zoom", zoom)
+  console.log("🚀 ~ file: index.tsx ~ line 85 ~ center", center)
     dispatch.models_Location.setMapCenter({
       center: center,
       zoom: zoom,
@@ -87,6 +91,7 @@ export const Comps_Map_MyGoogleMap = (_props: typeof defaultProps) => {
   };
 
   const _onClick = (value) => {
+  console.log("🚀 ~ file: index.tsx ~ line 94 ~ value", value)
     dispatch.models_Location.setMouseLoc({
       lat: value.lat,
       lng: value.lng,
@@ -105,7 +110,7 @@ export const Comps_Map_MyGoogleMap = (_props: typeof defaultProps) => {
     _generateAddress({mapApi: maps});
   };
 
-  const _generateAddress = (mapApi) => {
+  const _generateAddress = ({mapApi}) => {
   console.log("🚀 ~ file: index.tsx ~ line 109 ~ mapApi", mapApi)
     // const { mapApi } = selected.mapApi;
 
@@ -114,12 +119,10 @@ export const Comps_Map_MyGoogleMap = (_props: typeof defaultProps) => {
     geocoder.geocode(
       { location: { lat: selected.lat, lng: selected.lng } },
       (results, status) => {
-        console.log(results);
-        console.log(status);
+      console.log("🚀 ~ file: index.tsx ~ line 121 ~ status", status)
+      console.log("🚀 ~ file: index.tsx ~ line 121 ~ results", results)
         if (status === 'OK') {
           if (results[0]) {
-            zoom = 12;
-            dispatch.models_({ address: results[0].formatted_address });
             const addComps = results[0].address_components;
             dispatch.models_Location.setCurrentLoc({
               gps: { lat: selected.lat, lng: selected.lng },
@@ -180,20 +183,20 @@ export const Comps_Map_MyGoogleMap = (_props: typeof defaultProps) => {
               permission.state === 'granted'
                 ? navigator.geolocation.getCurrentPosition((position) => {
                     resolve({
-                      center: [
-                        position.coords.latitude,
-                        position.coords.longitude,
-                      ],
-                      lat: position.coords.latitude,
-                      lng: position.coords.longitude,
-                    });
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                      })
                   })
                 : resolve(null)
             )
         : reject(new Error('Permission API is not supported'))
     );
   };
-
+  console.log("🚀 ~ file: index.tsx ~ line 199 ~ selected.center", selected.center)
+  console.log("🚀 ~ file: index.tsx ~ line 201 ~ selected.zoom", selected.zoom)
+  console.log("🚀 ~ file: index.tsx ~ line 220 ~ selected.lat", selected.lat)
+  console.log("🚀 ~ file: index.tsx ~ line 220 ~ selected.lng", selected.lng)
+  
   return (
     <Wrapper>
       <GoogleMapReact
@@ -208,7 +211,7 @@ export const Comps_Map_MyGoogleMap = (_props: typeof defaultProps) => {
         onChildClick={() => console.log('child click')}
         onClick={_onClick}
         bootstrapURLKeys={{
-          key: process.env.REACT_APP_GOOGLEMAPS_API,
+          key: "AIzaSyCBC8EA64V1xJr6hoFqUCvwDFo4o9Lp2gM",
           libraries: ['places', 'geometry'],
         }}
         yesIWantToUseGoogleMapApiInternals

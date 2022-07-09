@@ -3,7 +3,10 @@ import Link from 'next/link';
 import { Comps_Map_BaseMap } from '#src/Comps/Map/BaseMap';
 import { Comps_layout_locTable } from '#src/Comps/layout/locTable';
 import { Comps_layout_imageHandler } from '#src/Comps/layout/imageHandler';
+import { Comps_misc_Spinner } from '#src/Comps/misc/Spinner';
 import { putDataToDB } from '#src/api';
+import isEmpty from 'lodash.isempty';
+
 
 import { createStructuredSelector } from '#src/models/utils';
 import { useSelector } from '#src/models/hooks';
@@ -131,7 +134,11 @@ export const Comps_layout_entryForm = (_props: typeof defaultProps) => {
                 />
               </div>
             </div>
+            {!isEmpty ? (
             <Comps_Map_BaseMap location={selected.gps}/>
+            ) : (
+              <Comps_misc_Spinner />
+          )}
             <Comps_layout_locTable
               data={Object.assign(
                 selected.gps,
