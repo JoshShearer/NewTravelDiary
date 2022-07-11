@@ -3,6 +3,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head';
 import { getDataFromDb } from '#src/api';
 import { RootState, Actions, dispatch, store } from '#src/models/store';
+import { Comps_Map_MyGoogleMap } from '#src/Comps/Map/MyGoogleMap';
 
 import { Comps_Navigation_Footer } from '#src/Comps/Navigation/Footer';
 import * as serviceWorker from '../serviceWorker';
@@ -43,7 +44,7 @@ const TravelDiary: NextPage = () => {
                 />
             </Head>
             <main>
-                {/* <Comps_layout_App /> */}
+                <Comps_Map_MyGoogleMap />
                 <Comps_Navigation_Footer />
             </main>
         </div>

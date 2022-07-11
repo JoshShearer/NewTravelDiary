@@ -134,8 +134,8 @@ export const Comps_layout_entryForm = (_props: typeof defaultProps) => {
                 />
               </div>
             </div>
-            {!isEmpty ? (
-            <Comps_Map_BaseMap location={selected.gps}/>
+            {!isEmpty(selected.gps) ? (
+            <Comps_Map_BaseMap location={selected.gps} mapSize={{ width: '100%', height: '50vh' }} zoom={8}/>
             ) : (
               <Comps_misc_Spinner />
           )}

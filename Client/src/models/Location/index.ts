@@ -23,7 +23,7 @@ type defaultState = {
     mapApi: null;
     geoCoder: null;
     places: null;
-    zoom: number;
+    zoom: number;c  
     address: string;
     mouse: {
       lat: number;

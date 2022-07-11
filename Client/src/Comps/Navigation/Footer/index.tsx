@@ -9,7 +9,7 @@ export const Comps_Navigation_Footer = () => {
           
         </nav> */}
         <div className="flex justify-center my-3 space-x-12">
-          <Link href="/Home">
+          <Link href="/">
             <button
               type="button"
               className="inline-flex items-center px-6 py-1 border border-white shadow-sm text-base font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
