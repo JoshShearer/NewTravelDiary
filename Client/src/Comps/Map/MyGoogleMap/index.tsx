@@ -49,6 +49,7 @@ export const Comps_Map_MyGoogleMap = (_props: typeof defaultProps) => {
           console.log("🚀 ~ file: index.tsx ~ line 48 ~ .then ~ coords", coords)
           console.log('Geolocation Success');
           dispatch.models_Location.setMapGPS(coords);
+          dispatch.models_Location.setMouseLoc(coords);
         } else {
           console.log('Geolocation Permission Denied');
         }

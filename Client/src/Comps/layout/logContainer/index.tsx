@@ -73,7 +73,7 @@ export const Comps_layout_logContainer = (_props: typeof defaultProps) => {
           <div className="group aspect-w-2 aspect-h-1 rounded-lg overflow-hidden sm:aspect-h-1 sm:aspect-w-1 sm:row-span-2">
             <Comps_Map_BaseMap
               location={props.entry.gps}
-              mapSize={{ width: '100%', height: '50vh' }}
+              mapSize={{ width: '80%', height: '30vh' }}
               zoom={11}
             />
           </div>

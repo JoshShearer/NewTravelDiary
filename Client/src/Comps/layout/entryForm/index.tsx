@@ -20,7 +20,7 @@ const defaultProps = {
   children?: JSX.Element;
 };
 const selector = createStructuredSelector({
-  gps: (root) => root.models_Location.gps,
+  gps: (root) => root.models_Location.map.center,
   location: (root) => root.models_Location.location,
   entryData: (root) => root.models_dEntry.entryData,
   title: (root) => root.models_dEntry.tempTitle,
@@ -135,7 +135,7 @@ export const Comps_layout_entryForm = (_props: typeof defaultProps) => {
               </div>
             </div>
             {!isEmpty(selected.gps) ? (
-            <Comps_Map_BaseMap location={selected.gps} mapSize={{ width: '100%', height: '50vh' }} zoom={8}/>
+            <Comps_Map_BaseMap location={selected.gps} mapSize={{ width: '100%', height: '25vh' }} zoom={8}/>
             ) : (
               <Comps_misc_Spinner />
           )}
